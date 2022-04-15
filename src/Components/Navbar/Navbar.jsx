@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BsCart3 } from 'react-icons/bs';
 import Logo from '../../Images/logo2.png'
 
 const Navbar = () => {
+    const navigate = useNavigate()
     return (
         <div className='flex items-center justify-between h-20 container mx-auto'>
-            <div>
+            <div onClick={() => navigate('/')}>
                 <img className='w-32' src={Logo} alt="" />
             </div>
             <nav className='flex items-center'>
