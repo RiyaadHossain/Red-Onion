@@ -1,4 +1,5 @@
 
+import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import SignIn from './Components/Auth/SignIn/SignIn';
@@ -12,7 +13,8 @@ import Navbar from './Components/Navbar/Navbar';
 function App() {
   return (
     <div>
-      <Navbar/>
+      <Navbar />
+      <Toaster/>
       <Routes>
         <Route path='/' element={<Home/> }/>
         <Route path='/cart' element={<Cart/> }/>

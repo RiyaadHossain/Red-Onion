@@ -5,7 +5,7 @@ import Logo from "../../../Images/logo2.png";
 const SignIn = () => {
     const navigate = useNavigate()
   return (
-    <div className="SignIn-container">
+    <div className="SignIn-container h-[61.7vh]">
       <div className="flex justify-center items-center py-16">
         <div>
           <img className="w-40 mx-auto" src={Logo} alt="" />

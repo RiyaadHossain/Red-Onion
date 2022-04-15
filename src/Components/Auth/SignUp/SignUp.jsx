@@ -1,15 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../../Images/logo2.png";
+import auth from "../../../Firebase/Firebase.init";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmCassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
+
+  // On Email Submit
+  const onEmailSubmit = (e) => {
+    e.preventDefault();
+    if (password !== confirmCassword) {
+      alert("Password didn't match");
+      return;
+    }
+    createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    const user = userCredential.user;
+    toast.success("Account Created")
+    navigate('/')
+    console.log(user);
+  })
+  .catch((error) => {
+    const errorMessage = error.message;
+    toast.error(errorMessage)
+    console.log(errorMessage);
+  });
+
+  };
   return (
     <div className="SignIn-container">
       <div className="flex justify-center items-center py-16">
         <div>
           <img className="w-40 mx-auto" src={Logo} alt="" />
-          <form>
+          <form onSubmit={onEmailSubmit}>
             <input
               className="block mt-5 py-3 w-96 pl-3 text-lg outline-none"
               type="text"
@@ -19,16 +47,19 @@ const SignUp = () => {
               className="block mt-5 py-3 w-96 pl-3 text-lg outline-none"
               type="email"
               placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
             />
             <input
               className="block mt-5 py-3 w-96 pl-3 text-lg outline-none"
               type="password"
               placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
             />
             <input
               className="block mt-5 py-3 w-96 pl-3 text-lg outline-none"
               type="password"
               placeholder="Confirm Password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <input
               className="block my-5 w-96 bg-red-600 text-white py-3"
