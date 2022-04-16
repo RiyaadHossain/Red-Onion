@@ -8,7 +8,7 @@ import Dinner6 from '../../../Images/dinner/dinner6.png'
 
 const Dinner = () => {
     return (
-        <div className='grid grid-cols-3 gap-8 mt-14'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14'>
             <div>
                 <img className='w-36 mx-auto mb-3' src={Dinner1} alt="" />
                 <h3 className='text-xl font-semibold'>Healthy Meal Plan</h3>

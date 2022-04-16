@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../../Images/logo2.png";
 import auth from "../../../Firebase/Firebase.init";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -10,6 +10,8 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmCassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   // On Email Submit
   const onEmailSubmit = (e) => {
@@ -19,18 +21,17 @@ const SignUp = () => {
       return;
     }
     createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    const user = userCredential.user;
-    toast.success("Account Created")
-    navigate('/')
-    console.log(user);
-  })
-  .catch((error) => {
-    const errorMessage = error.message;
-    toast.error(errorMessage)
-    console.log(errorMessage);
-  });
-
+      .then((userCredential) => {
+        const user = userCredential.user;
+        toast.success("Account Created");
+        navigate(from);
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        toast.error(errorMessage);
+        console.log(errorMessage);
+      });
   };
   return (
     <div className="SignIn-container">

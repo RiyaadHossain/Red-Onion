@@ -11,8 +11,8 @@ const WhyUs = () => {
     return (
         <div className='container mx-auto my-16'>
             <h1 className='text-4xl font-bold'>Why Choose us</h1>
-            <p className='text-xl mt-3 w-[700px]'>Barton waited  twenty always repair in within we do. An delighted offending curiosity my is dashwoods at. boy properous increasing surrounded.</p>
-            <div className='mt-10 grid grid-cols-3 gap-6'>
+            <p className='text-xl mt-3 max-w-lg'>Barton waited  twenty always repair in within we do. An delighted offending curiosity my is dashwoods at. boy properous increasing surrounded.</p>
+            <div className='mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 <div>
                     <img src={FastDelivery} alt="" />
                     <div className='flex items-center mt-5 px-4'><img src={fastIcon} alt="" />
