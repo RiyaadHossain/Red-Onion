@@ -4,6 +4,7 @@ import Logo from "../../../Images/logo2.png";
 import auth from "../../../Firebase/Firebase.init";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import toast from "react-hot-toast";
+import HelmetTitle from "../../HelmetTitle/HelmetTitle";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -35,6 +36,7 @@ const SignUp = () => {
   };
   return (
     <div className="SignIn-container">
+      <HelmetTitle title='Sign Up - Red Onion'/>
       <div className="flex justify-center items-center py-16">
         <div>
           <img className="w-40 mx-auto" src={Logo} alt="" />
