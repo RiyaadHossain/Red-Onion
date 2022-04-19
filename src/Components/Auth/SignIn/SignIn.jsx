@@ -31,7 +31,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="SignIn-container h-[61.7vh]">
+    <div className="SignIn-container h-[62vh]">
       <Helmet>
         <title>Sign In - Red Onion</title>
       </Helmet>
