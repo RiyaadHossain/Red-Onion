@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../../Firebase/Firebase.init";
 import Logo from "../../../Images/logo2.png";
-import {
-  useSignInWithEmailAndPassword,
-} from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { Helmet } from "react-helmet-async";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -15,7 +14,7 @@ const SignIn = () => {
   console.log(from);
   const [signInWithEmailAndPassword, user, error] =
     useSignInWithEmailAndPassword(auth);
-  
+
   // Observe this !
   useEffect(() => {
     if (user) {
@@ -29,11 +28,13 @@ const SignIn = () => {
   const onEmailSubmit = (e) => {
     e?.preventDefault();
     signInWithEmailAndPassword(email, password);
-
   };
 
   return (
     <div className="SignIn-container h-[61.7vh]">
+      <Helmet>
+        <title>Sign In - Red Onion</title>
+      </Helmet>
       <div className="flex justify-center items-center py-16">
         <div>
           <img className="w-40 mx-auto" src={Logo} alt="" />

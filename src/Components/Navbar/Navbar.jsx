@@ -6,6 +6,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/Firebase.init";
 import { signOut } from "firebase/auth";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -21,6 +22,9 @@ const Navbar = () => {
   };
   return (
     <div className="flex items-center justify-between h-20 container mx-auto">
+      <Helmet>
+        <title>Home - Red Onion</title>
+      </Helmet>
       <div onClick={() => navigate("/")}>
         <img className="w-32" src={Logo} alt="" />
       </div>
