@@ -15,7 +15,11 @@ const RequireAuth = ({ children }) => {
     });
   };
 
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
+
+  if (loading) {
+    return <p className="text-5xl text-red-600  text-center pt-40 bg-slate-200 h-[61.6vh]">Loading...</p>;
+  }
 
   if (!user) {
     return <Navigate to="/signin" state={{ from: location }} replace />;
